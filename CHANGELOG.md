@@ -1,3 +1,7 @@
+## v0.8.92.11
+
+- feat(release): show full version and refine about page
+
 ## v0.8.92.10
 
 - fix(ci): stabilize android artifacts and release notes
