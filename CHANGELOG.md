@@ -1,3 +1,7 @@
+## v0.8.92.13
+
+- chore: point auto update check to fqfqgo/FlClash-new
+
 ## v0.8.92.12
 
 - fix(macos): avoid high CPU when tray traffic is disabled (fix #1644)
