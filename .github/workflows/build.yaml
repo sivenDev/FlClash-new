@@ -5,11 +5,21 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
+    inputs:
+      target:
+        description: Build target set
+        required: true
+        default: macos
+        type: choice
+        options:
+          - macos
+          - all
 env:
   IS_STABLE: ${{ !contains(github.ref, '-') }}
 
 jobs:
   build:
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.target == 'all' || matrix.platform == 'macos' }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -202,6 +212,7 @@ jobs:
           overwrite: true
 
   changelog:
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') }}
     runs-on: ubuntu-latest
     needs: [ build ]
     steps:
@@ -257,6 +268,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   upload:
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') }}
     permissions: write-all
     needs: [ build ]
     runs-on: ubuntu-latest
