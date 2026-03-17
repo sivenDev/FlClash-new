@@ -10,7 +10,11 @@ required_snippets = [
     "options:",
     "- macos",
     "- all",
-    "github.event_name != 'workflow_dispatch' || inputs.target == 'all' || matrix.platform == 'macos'",
+    "include: ${{ fromJSON(",
+    "github.event_name == 'workflow_dispatch' && inputs.target == 'macos'",
+    '{"platform":"macos","os":"macos-15-intel","arch":"amd64"}',
+    '{"platform":"macos","os":"macos-latest","arch":"arm64"}',
+    '{"platform":"android","os":"ubuntu-latest"}',
     "if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') }}",
 ]
 
