@@ -769,10 +769,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "System DNS will be used when turned off",
     ),
     "stop": MessageLookupByLibrary.simpleMessage("Stop"),
-    "launchBrowser": MessageLookupByLibrary.simpleMessage("Launch browser"),
-    "launchBrowserFailed": MessageLookupByLibrary.simpleMessage(
-      "Launch browser failed",
-    ),
     "stopVpn": MessageLookupByLibrary.simpleMessage("Stopping VPN..."),
     "style": MessageLookupByLibrary.simpleMessage("Style"),
     "subRule": MessageLookupByLibrary.simpleMessage("Sub rule"),
